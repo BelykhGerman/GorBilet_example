@@ -1,4 +1,5 @@
 using GorBilet_example.Data;
+using GorBilet_example.Middlewares;
 using GorBilet_example.Models;
 using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
@@ -18,6 +19,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options => {
 });
 
 var app = builder.Build();
+app.UseMiddleware<HeadersMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
